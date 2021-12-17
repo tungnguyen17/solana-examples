@@ -1,0 +1,14 @@
+{
+  "name": "solana-examples",
+  "version": "0.1.0",
+  "description": "Sample programs to demonstrate how to develop Solana Program",
+  "author": "Lukaz Precision",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "cargo build-bpf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tungnguyen17/solana-examples.git"
+  }
+}
