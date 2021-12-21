@@ -1,0 +1,21 @@
+[package]
+name = "program-derived-address"
+version = "0.0.1"
+description = "Hello World"
+authors = ["lukaz"]
+repository = ""
+license = "Apache-2.0"
+edition = "2018"
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+borsh = "0.9.1"
+borsh-derive = "0.9.1"
+solana-program = "=1.8.6"
+thiserror = "1.0"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "program_derived_address"

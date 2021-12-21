@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "hello-world",
+  "program-derived-address"
 ]
 exclude = [
 ]
