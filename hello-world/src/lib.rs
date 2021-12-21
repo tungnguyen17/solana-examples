@@ -2,17 +2,24 @@ use solana_program::{
   account_info::{
     AccountInfo
   },
-  entrypoint::ProgramResult,
+  entrypoint,
+  entrypoint::{
+    ProgramResult,
+  },
   msg,
-  pubkey::Pubkey,
+  pubkey::{
+    Pubkey,
+  },
 };
 
+entrypoint!(process_instruction);
+
 pub fn process_instruction(
-  _program_id: &Pubkey,
+  program_id: &Pubkey,
   _accounts: &[AccountInfo],
   _instruction_data: &[u8],
 ) -> ProgramResult {
-  msg!("process_instruction");
+  msg!("process_instruction of program {:?}", &program_id);
 
   Ok(())
 }
