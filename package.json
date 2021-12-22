@@ -9,6 +9,7 @@
     "deploy": "npm run deploy:hw && npm run deploy:pda",
     "deploy:hw": "solana program deploy /mnt/d/Personal/tungnguyen17--solana-examples/target/deploy/hello_world.so",
     "deploy:pda": "solana program deploy /mnt/d/Personal/tungnguyen17--solana-examples/target/deploy/program_derived_address.so",
+    "test": "npm run test:pda",
     "test:pda": "ts-node ./scripts/program_derived_address_main.ts"
   },
   "repository": {

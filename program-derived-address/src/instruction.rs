@@ -12,5 +12,7 @@ pub enum CustomInstruction {
     seeds: Vec<u8>,
     #[allow(dead_code)]
     nonce: u8,
+    #[allow(dead_code)]
+    space: u16,
   }
 }
