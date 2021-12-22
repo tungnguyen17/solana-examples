@@ -1,15 +1,22 @@
 use crate::{
+  account::{
+    InvokeAccount,
+  },
   instruction::{
     CustomInstruction
   },
 };
 use borsh::{
   BorshDeserialize,
+  BorshSerialize,
 };
 use solana_program::{
   account_info::{
     next_account_info,
     AccountInfo
+  },
+  borsh::{
+    try_from_slice_unchecked,
   },
   entrypoint::{
     ProgramResult,
@@ -74,6 +81,24 @@ impl Processor {
     Ok(())
   }
 
+  pub fn process_invoke(
+    accounts: &[AccountInfo],
+  ) -> ProgramResult {
+    msg!("Processor::process_invoke");
+
+    let account_info_iter = &mut accounts.iter();
+    let pda_account_info = next_account_info(account_info_iter)?;
+    let clock = Clock::get()?;
+
+    let mut pda_account: InvokeAccount = try_from_slice_unchecked(&pda_account_info.data.borrow())?;
+    pda_account.count += 1;
+    pda_account.timestamp = clock.unix_timestamp;
+    pda_account.serialize(&mut *pda_account_info.data.borrow_mut())?;
+    msg!("account_info {:?}", pda_account);
+
+    Ok(())
+  }
+
   pub fn process(
     program_id: &Pubkey,
     accounts: &[AccountInfo],
@@ -92,9 +117,15 @@ impl Processor {
           &accounts,
           seeds,
           nonce,
-          space
+          space,
         )
       },
+      CustomInstruction::Invoke {
+      } => {
+        Self::process_invoke(
+          &accounts,
+        )
+      }
     }
   }
 }

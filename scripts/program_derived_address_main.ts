@@ -11,7 +11,7 @@ const PROGRAM_KEYPAIR_FILE_PATH: string = path.join('target', 'deploy', 'program
   const defaultAccount: Keypair = await SolanaConfigService.getDefaultAccount()
   const programAccount: Keypair = await SolanaConfigService.readAccountFromFile(PROGRAM_KEYPAIR_FILE_PATH)
 
-  await ProgramDerivedAddressService.createAccount(
+  await ProgramDerivedAddressService.invoke(
     connection,
     defaultAccount,
     'hello_world',

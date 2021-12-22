@@ -14,5 +14,7 @@ pub enum CustomInstruction {
     nonce: u8,
     #[allow(dead_code)]
     space: u16,
-  }
+  },
+  Invoke {
+  },
 }
